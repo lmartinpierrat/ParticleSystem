@@ -24,16 +24,16 @@ namespace	ParticleSystem
     virtual void	apply(glm::vec3 &, glm::vec3 &);
 
   public:
-    inline float	getAngle(void) const { return this->_angle; }
-    inline float	getRadius(void) const { return this->_radius; }
-    inline float	getLength(void) const { return this->_length; }
-    inline EmitFrom	getEmitFromType(void) const { return this->_emitFrom; }
+    float		getAngle(void) const { return this->_angle; }
+    float		getRadius(void) const { return this->_radius; }
+    float		getLength(void) const { return this->_length; }
+    EmitFrom		getEmitFromType(void) const { return this->_emitFrom; }
 
   public:
-    inline void		setAngleTo(float angle) { this->_angle = angle; }
-    inline void		setRadiusTo(float radius) { this->_radius = radius; }
-    inline void		setLengthTo(float length) { this->_length = length; }
-    inline void		setEmitFromTypeTo(EmitFrom type) { this->_emitFrom = type; }
+    void		setAngleTo(float angle) { this->_angle = angle; }
+    void		setRadiusTo(float radius) { this->_radius = radius; }
+    void		setLengthTo(float length) { this->_length = length; }
+    void		setEmitFromTypeTo(EmitFrom type) { this->_emitFrom = type; }
 
   protected:
     float		_angle;

@@ -15,12 +15,12 @@ namespace	ParticleSystem
     virtual void	apply(glm::vec3 &, glm::vec3 &);
     
   public:
-    inline float	getRadius(void) const { return this->_radius; }
-    inline bool		getEmitFromShell(void) const { return this->_emitFromShell; }
+    float		getRadius(void) const { return this->_radius; }
+    bool		getEmitFromShell(void) const { return this->_emitFromShell; }
     
   public:
-    inline void		setRadiusTo(float radius) { this->_radius = radius; }
-    inline void		setEmitFromShellTo(bool emitFromShell) { this->_emitFromShell = emitFromShell; }
+    void		setRadiusTo(float radius) { this->_radius = radius; }
+    void		setEmitFromShellTo(bool emitFromShell) { this->_emitFromShell = emitFromShell; }
 
   protected:
     float	_radius;

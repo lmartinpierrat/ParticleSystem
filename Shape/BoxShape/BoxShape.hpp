@@ -15,10 +15,10 @@ namespace	ParticleSystem
     virtual void	apply(glm::vec3 &, glm::vec3 &);
 
   public:
-    inline void			setBoxTo(const glm::vec3 &box) { this->_box = box; }
+    void		setBoxTo(const glm::vec3 &box) { this->_box = box; }
 
   public:
-    inline const glm::vec3	&getBox(void) const { return this->_box; }
+    const glm::vec3	&getBox(void) const { return this->_box; }
 
   protected:
     glm::vec3           _box;
