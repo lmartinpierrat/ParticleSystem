@@ -1,0 +1,26 @@
+#include	"../Shape.hpp"
+
+namespace	ParticleSystem
+{
+  class   SphereShape : public ParticleSystem::Shape
+  {
+  public:
+    SphereShape(float = 1.0f, bool = false, bool = false, bool = true);
+    ~SphereShape(void);
+
+  public:
+    virtual void    apply(glm::vec3 &, glm::vec3 &);
+    
+  public:
+    float           getRadius(void) const { return this->_radius; }
+    bool            getEmitFromShell(void) const { return this->_emitFromShell; }
+    
+  public:
+    void            setRadiusTo(float radius) { this->_radius = radius; }
+    void            setEmitFromShellTo(bool emitFromShell) { this->_emitFromShell = emitFromShell; }
+
+  protected:
+    float           _radius;
+    bool            _emitFromShell;
+  };
+}
