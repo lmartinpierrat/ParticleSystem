@@ -1,4 +1,5 @@
 #include	"BoxShape.hpp"
+#include	<glm/gtc/random.hpp>
 
 namespace	ParticleSystem
 {

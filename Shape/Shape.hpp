@@ -3,12 +3,12 @@
 
 #include <glm/glm.hpp>
 
-namespace   ParticleSystem
+namespace	ParticleSystem
 {
-  class   Shape
+  class		Shape
   {
   public:
-    enum    Type
+    enum	Type
       {
 	BOX,
 	SPHERE,
@@ -21,7 +21,7 @@ namespace   ParticleSystem
     ~Shape(void);
 
   public:
-    virtual void	apply(glm::vec3 &, glm::vec3 &) = 0;
+    virtual void		apply(glm::vec3 &, glm::vec3 &) = 0;
 
   public:
     inline Type		getType(void) const { return this->_type; }
@@ -38,5 +38,6 @@ namespace   ParticleSystem
     Type		_type;
   };
 }
+
 
 #endif

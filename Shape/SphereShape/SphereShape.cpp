@@ -1,10 +1,19 @@
 #include	"SphereShape.hpp"
+#include	<glm/gtc/random.hpp>
 
 namespace	ParticleSystem
 {
   SphereShape::SphereShape(float radius, bool emitFromShell,
 			   bool randomDirection, bool isActive) :
     Shape(randomDirection, isActive, Shape::SPHERE),
+    _radius(radius),
+    _emitFromShell(emitFromShell)
+  {
+  }
+
+  SphereShape::SphereShape(float radius, bool emitFromShell,
+			   bool randomDirection, bool isActive, Type type) :
+    Shape(randomDirection, isActive, type),
     _radius(radius),
     _emitFromShell(emitFromShell)
   {

@@ -5,7 +5,7 @@
 
 namespace	ParticleSystem
 {
-  class   BoxShape : public Shape
+  class	BoxShape : public ParticleSystem::Shape
   {
   public:
     BoxShape(const glm::vec3 & = glm::vec3(0.0f, 0.0f, 0.0f), bool = false, bool = true);

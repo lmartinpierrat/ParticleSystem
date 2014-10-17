@@ -11,6 +11,9 @@ namespace	ParticleSystem
     SphereShape(float = 1.0f, bool = false, bool = false, bool = true);
     ~SphereShape(void);
 
+  protected:
+    SphereShape(float = 1.0f, bool = false, bool = false, bool = true, Type = Shape::SPHERE);
+
   public:
     virtual void	apply(glm::vec3 &, glm::vec3 &);
     
