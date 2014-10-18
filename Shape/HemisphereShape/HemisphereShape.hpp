@@ -1,7 +1,7 @@
 #ifndef		__PARTICLE_SYSTEM_HEMISPHERE_SHAPE_HPP__
 # define	__PARTICLE_SYSTEM_HEMISPHERE_SHAPE_HPP__
 
-#include	"../SphereShape/SphereShape.hpp"
+#include	"SphereShape.hpp"
 
 namespace	ParticleSystem
 {

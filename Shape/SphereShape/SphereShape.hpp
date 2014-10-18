@@ -1,7 +1,7 @@
 #ifndef		__PARTICLE_SYSTEM_SPHERE_SHAPE_HPP__
 # define	__PARTICLE_SYSTEM_SPHERE_SHAPE_HPP__
 
-#include	"../Shape.hpp"
+#include	"Shape.hpp"
 
 namespace	ParticleSystem
 {
@@ -26,8 +26,8 @@ namespace	ParticleSystem
     void		setEmitFromShellTo(bool emitFromShell) { this->_emitFromShell = emitFromShell; }
 
   protected:
-    float	_radius;
-    bool	_emitFromShell;
+    float		_radius;
+    bool		_emitFromShell;
   };
 }
 

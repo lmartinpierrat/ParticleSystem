@@ -17,20 +17,64 @@ namespace	ParticleSystem
       };
 
   protected:
+    //----------------------------------------------
+    //
+    //----------------------------------------------
     Shape(bool randomDirection, bool isActive, Type);
+
+    //----------------------------------------------
+    //
+    //----------------------------------------------
     ~Shape(void);
 
   public:
-    virtual void		apply(glm::vec3 &, glm::vec3 &) = 0;
+    //----------------------------------------------
+    //
+    //----------------------------------------------
+    virtual void	apply(glm::vec3 &, glm::vec3 &) = 0;
 
   public:
-    inline Type		getType(void) const { return this->_type; }
-    inline bool		isActive(void) const { return this->_isActive; }
-    inline bool		getRandomDirectionMode(void) const { return this->_randomDirection; }
+    //----------------------------------------------
+    //
+    //----------------------------------------------
+    Type		getType(void) const
+    {
+      return this->_type;
+    }
+
+    //----------------------------------------------
+    //
+    //----------------------------------------------
+    bool		isActive(void) const
+    {
+      return this->_isActive;
+    }
+
+    //----------------------------------------------
+    //
+    //----------------------------------------------
+    bool		getRandomDirectionMode(void) const
+    {
+      return this->_randomDirection;
+    }
 
   public:
-    inline void		setRandomDirectionModeTo(bool randomDirection) { this->_randomDirection = randomDirection; }
-    inline void		setActiveModeTo(bool activeMode) { this->_isActive = activeMode; }
+
+    //----------------------------------------------
+    //
+    //----------------------------------------------
+    void		setRandomDirectionModeTo(bool randomDirection)
+    {
+      this->_randomDirection = randomDirection;
+    }
+
+    //----------------------------------------------
+    //
+    //----------------------------------------------
+    void		setActiveModeTo(bool activeMode)
+    {
+      this->_isActive = activeMode;
+    }
 
   protected:
     bool		_isActive;

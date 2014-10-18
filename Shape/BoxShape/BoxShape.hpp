@@ -1,7 +1,7 @@
 #ifndef		__PARTICLE_SYSTEM_BOX_SHAPE_HPP__
 # define	__PARTICLE_SYSTEM_BOX_SHAPE_HPP__
 
-#include	"../Shape.hpp"
+#include	"Shape.hpp"
 
 namespace	ParticleSystem
 {

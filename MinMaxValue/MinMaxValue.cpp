@@ -11,18 +11,12 @@ namespace   ParticleSystem
         _value2(value2),
         _type(type)
     {
-
     }
 
     MinMaxValueFloat::MinMaxValueFloat(Type type, const std::vector<std::pair<float, float> > &curve1, const std::vector<std::pair<float, float> > &curve2) :
         _curve1(curve1),
         _curve2(curve2),
         _type(type)
-    {
-
-    }
-
-    MinMaxValueFloat::~MinMaxValueFloat(void)
     {
 
     }
