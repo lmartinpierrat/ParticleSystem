@@ -10,7 +10,12 @@
 
 #define		GLFW_INCLUDE_NONE
 #include	<GLFW/glfw3.h>
+#include	<iostream>
+#include	<list>
+#include	<cstdlib>
+#include	<thread>
 #include	<glbinding/Binding.h>
+// #include	"ParticleSystem.hpp"
 
 static void	errorCallback(int error, const char *description)
 {
@@ -37,40 +42,46 @@ GLFWwindow	*initGlfwWindow(void)
   return (window);
 }
 
-void	drawingScene(std::list<ParticleSystem *> &scene)
+void	drawingScene(// std::list<ParticleSystem *> &scene
+		     )
 {
-  for (std::list<ParticleSystem *>::iterator it = scene.begin() ; it != scene.end() ; ++it)
-    {
-      (*it)->draw();
-    }
+  // for (std::list<ParticleSystem *>::iterator it = scene.begin() ; it != scene.end() ; ++it)
+  //   {
+  //     (*it)->draw();
+  //   }
 }
 
-void	updateScene(std::list<ParticleSystem *> &scene)
+void	updateScene(// std::list<ParticleSystem *> &scene
+		    )
 {
-  for (std::list<ParticleSystem *>::iterator it = scene.begin() ; it != scene.end() ; ++it)
-    {
-      (*it)->update();
-    }
+  // for (std::list<ParticleSystem *>::iterator it = scene.begin() ; it != scene.end() ; ++it)
+  //   {
+  //     (*it)->update();
+  //   }
 }
 
-void	initializeScene(std::list<ParticleSystem *> &scene)
+void	initializeScene(// std::list<ParticleSystem *> &scene
+			)
 {
-  scene.push_back(new ParticleSystem());
+  // scene.push_back(new ParticleSystem());
 }
 
 int	run_demo(void)
 {
-  GLFWwindow	window = initGlfwWindow();
-  std::list<ParticleSystem *>	scene;
+  GLFWwindow	*window = initGlfwWindow();
+  // std::list<ParticleSystem *>	scene;
 
   if (window == NULL)
     return (EXIT_FAILURE);
   glbinding::Binding::initialize();
-  initializeScene(scene);
+  initializeScene(// scene
+		  );
   while (!glfwWindowShouldClose(window))
     {
-      std::thread drawer(&drawingScene, scene);
-      std::thread updater(&updateScene, scene);
+      std::thread drawer(&drawingScene// , scene
+			 );
+      std::thread updater(&updateScene// , scene
+			  );
       drawer.join();
       updater.join();
       glfwSwapBuffers(window);
