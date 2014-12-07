@@ -5,14 +5,14 @@
 
 namespace	ParticleSystem
 {
-  class   SphereShape : public ParticleSystem::Shape
+  class   SphereShape : public Shape
   {
   public:
     SphereShape(float = 1.0f, bool = false, bool = false, bool = true);
     ~SphereShape(void);
 
   protected:
-    SphereShape(float = 1.0f, bool = false, bool = false, bool = true, Type = Shape::SPHERE);
+    SphereShape(Shape::Type, float = 1.0f, bool = false, bool = false, bool = true);
 
   public:
     virtual void	apply(glm::vec3 &, glm::vec3 &);

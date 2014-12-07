@@ -1,142 +1,40 @@
-#ifndef     __PARTICLE_HPP__
-# define    __PARTICLE_HPP__
+#ifndef		__PARTICLE_SYSTEM_PARTICLE_HPP__
+# define	__PARTICLE_SYSTEM_PARTICLE_HPP__
 
-#include "../../../includes/glm/gtc/matrix_transform.hpp"
-#include "../../../includes/OpenGL.hh"
-#include "../MinMaxValue/MinMaxValue.hpp"
+#include	<glm/glm.hpp>
+#include	<vector>
 
-namespace   ParticleSystem
+namespace	ParticleSystem
 {
-  class   Particle
+
+  //----------------------------------------
+  //
+  //----------------------------------------
+  class		Particle
   {
   public:
     //----------------------------------------
     // Constructor
+    //
+    // @param :
+    // position : represent the position of the particle in the world
+    // rotation : represent the rotation of the particle in the world
+    // scale : represent the size of the particle in XYZ axis.
     //----------------------------------------
-    Particle(const glm::vec3 &position, const glm::vec3 &rotation, const glm::vec3 &scale);
+    Particle(const glm::vec3 &position = glm::vec3(0.0f, 0.0f, 0.0f),
+	     const glm::vec3 &rotation = glm::vec3(0.0f, 0.0f, 0.0f),
+	     const glm::vec3 &scale = glm::vec3(1.0f, 1.0f, 1.0f));
 
     //----------------------------------------
     // Destructor
     //----------------------------------------
-    ~Particle(void);
+    ~Particle(void) {}
 
   public:
     //----------------------------------------
     // 
     //----------------------------------------
-    bool                    update(void);
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    void                    draw(const glm::mat4 &, const glm::mat4 &);
-
-  public:
-    //----------------------------------------
-    // Lifetime of a particle is used to represent
-    // is life duration on the screen.
-    //
-    // lifetime of a particle is decremented over the 
-    // time when you call "update"
-    //----------------------------------------
-    void                    setLifetime(float lifetime)
-    {
-      this->_lifetime = lifetime;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    void                    setSpeed(float speed)
-    {
-      this->_speed = speed;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    void                    setColor(const glm::vec4 &color)
-    {
-      this->_color = color;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    void                    setGravityMultiplier(float gravity)
-    {
-      this->_gravityMultiplier = gravity;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    void                    setForce(const glm::vec3 &force)
-    {
-      this->_force = force;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    void                    setColorOverLifetime(const MinMaxValueColor &colorOverLifetime)
-    {
-      this->_colorOverLifetime = colorOverLifetime;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    void                    setSizeOverLifetime(const MinMaxValueFloat &sizeOverLifetime)
-    {
-      this->_sizeOverLifetime = sizeOverLifetime;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    void                    setRotationOverLifetime(const MinMaxValueFloat &rotationOverLifetime)
-    {
-      this->_rotationOverLifetime = rotationOverLifetime;
-    }
-
-  public:
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    const glm::vec3         &getPosition(void) const
-    {
-      return this->_position;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    const glm::vec3         &getRotation(void) const
-    {
-      return this->_rotation;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    const glm::vec3         &getScale(void) const
-    {
-      return this->_scale;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    const glm::vec3         &getActualScale(void) const
-    {
-      return this->_scaleWithGrowth;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    float                   getLifetime(void) const
+    float	getLifetime(void) const
     {
       return this->_lifetime;
     }
@@ -144,166 +42,89 @@ namespace   ParticleSystem
     //----------------------------------------
     // 
     //----------------------------------------
-    float                   getActualLifetime(void) const
+    bool	isAlive(void) const
     {
-      return this->_actualLifetime;
+      return this->_lifetime > 0.0f;
     }
 
     //----------------------------------------
     // 
     //----------------------------------------
-    float                   getSpeed(void) const
-    {
-      return this->_speed;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    float                   getGravityMultiplier(void) const
-    {
-      return this->_gravityMultiplier;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    const glm::vec4         &getColor(void) const
-    {
-      return this->_color;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    const glm::vec3         &getForce(void) const
+    const glm::vec3	&getForce(void) const
     {
       return this->_force;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    const MinMaxValueColor  &getColorOverLifetime(void) const
-    {
-      return this->_colorOverLifetime;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    const MinMaxValueFloat  &getSizeOverLifetime(void) const
-    {
-      return this->_sizeOverLifetime;
-    }
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    const MinMaxValueFloat  &getRotationOverLifetime(void) const
-    {
-      return this->_rotationOverLifetime;
     }
 
   public:
     //----------------------------------------
     // 
     //----------------------------------------
-    bool                isAlive(void) const
+    void	setLifetime(float newLifetime)
     {
-      return this->_lifetime > this->_actualLifetime;
+      this->_lifetime = newLifetime;
     }
 
-  private:
     //----------------------------------------
     // 
     //----------------------------------------
-    glm::mat4           lookAt(const glm::vec3 &, const glm::vec3 &);
+    void	setForce(const glm::vec3 &newForce)
+    {
+      this->_force = newForce;
+    }
 
-  private:
+  public:
     //----------------------------------------
-    // 
+    // Update is the function you need to call each frame with the time elapsed
+    // between the two last frame for update the particle position in the scene.
+    //
+    // Thread safe
     //----------------------------------------
-    glm::vec3           _position;
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    glm::vec3           _rotation;
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    glm::vec3           _scale;
+    void	update(float timeElapsed);
 
     //----------------------------------------
+    // draw is the function you need to call when you want to get vertex / uvs / color of the particle
+    // in the scene.
     // 
+    // @param:
+    // camPosition : must contains the camera position in the scene.
+    //
+    // Thread safe
     //----------------------------------------
-    glm::vec3           _actualScale;
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    float               _lifetime;
+    void	draw(const glm::vec3 &camPosition, std::vector<float> &vertex);
 
     //----------------------------------------
     // 
     //----------------------------------------
-    float               _actualLifetime;
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    float               _speed;
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    float               _gravityMultiplier;
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    glm::vec4           _color;
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    glm::vec3           _force;
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    MinMaxValueColor    &_colorOverLifetime;
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    MinMaxValueFloat    &_sizeOverLifetime;
-
-    //----------------------------------------
-    // 
-    //----------------------------------------
-    MinMaxValueFloat    &_rotationOverLifetime;
+    glm::mat4	lookAt(const glm::vec3 &, const glm::vec3 &);
 
   private:
 
     //----------------------------------------
-    // 
+    // This attribute is used to save the lifetime of the particle.
     //----------------------------------------
-    gdl::Geometry       *_geometry;
+    float	_lifetime;
 
     //----------------------------------------
-    // 
+    // This attribute is used to save the 3D position of the Particle
     //----------------------------------------
-    gdl::Texture        *_texture;
+    glm::vec3	_force;
 
     //----------------------------------------
-    // 
+    // This attribute is used to save the 3D position of the Particle
     //----------------------------------------
-    gdl::BasicShader    *_shader;
+    glm::vec3	_position;
+
+    //----------------------------------------
+    // This attribute is used to save the 3D rotation of the Particle
+    //----------------------------------------
+    glm::vec3	_rotation;
+
+    //----------------------------------------
+    // This attribute is used to save the 3D scale of the Particle
+    //----------------------------------------
+    glm::vec3	_scale;
+
   };
 }
 
-#endif
-
+#endif /* !__PARTICLE_SYSTEM_PARTICLE_HPP__ */

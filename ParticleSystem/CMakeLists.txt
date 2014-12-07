@@ -1,12 +1,18 @@
 ##
-## CMakeLists.txt for ParticleSystem in /ParticleSystem/Shape/SphereShape
+## CMakeLists.txt for ParticleSystem in /ParticleSystem/Shape
 ## 
 ## Made by Louis Martin-Pierrat
 ## Login   <mart_p@epitech.net>
 ## 
-## Started on  Fri Oct 17 17:07:26 2014 Louis Martin-Pierrat
-## Last update Fri Oct 17 17:07:49 2014 Louis Martin-Pierrat
+## Started on  Fri Oct 17 17:02:52 2014 Louis Martin-Pierrat
+## Last update Fri Oct 17 17:05:03 2014 Louis Martin-Pierrat
 ##
+
+## ADD SUBDIRECTORY
+
+
+## END
+
 
 ## INCLUDE DIRECTORY
 
@@ -26,7 +32,7 @@ SET_PROPERTY(GLOBAL PROPERTY INCLUDEDIR ${IDIR})
 GET_PROPERTY(SRCS GLOBAL PROPERTY SOURCES)
 SET(SRCS
 	${SRCS}
-	${CMAKE_CURRENT_SOURCE_DIR}/SphereShape.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/ParticleSystem.cpp
 	)
 SET_PROPERTY(GLOBAL PROPERTY SOURCES ${SRCS})
 
@@ -40,7 +46,7 @@ SET_PROPERTY(GLOBAL PROPERTY SOURCES ${SRCS})
 GET_PROPERTY(HEADERS_FILES GLOBAL PROPERTY HEADERS)
 SET(HEADERS_FILES
 	${HEADERS_FILES}
-	${CMAKE_CURRENT_SOURCE_DIR}/SphereShape.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/ParticleSystem.hpp
 	)
 SET_PROPERTY(GLOBAL PROPERTY HEADERS ${HEADERS_FILES})
 

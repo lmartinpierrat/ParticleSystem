@@ -4,7 +4,7 @@ namespace	ParticleSystem
 {
   HemisphereShape::HemisphereShape(float radius, bool emitFromShell,
 				   bool randomDirection, bool isActive) :
-    SphereShape(radius, emitFromShell, randomDirection, isActive, Shape::HEMISPHERE)
+    SphereShape(Shape::HEMISPHERE, radius, emitFromShell, randomDirection, isActive)
   {
   }
 

@@ -11,8 +11,8 @@ namespace	ParticleSystem
   {
   }
 
-  SphereShape::SphereShape(float radius, bool emitFromShell,
-			   bool randomDirection, bool isActive, Type type) :
+  SphereShape::SphereShape(Type type, float radius, bool emitFromShell,
+			   bool randomDirection, bool isActive) :
     Shape(randomDirection, isActive, type),
     _radius(radius),
     _emitFromShell(emitFromShell)
